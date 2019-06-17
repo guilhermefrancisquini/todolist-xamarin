@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Projeto04.View.TelaPrincipal">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="Tarefa" Placeholder="Digite a nova tarefa" HorizontalOptions="FillAndExpand"></Entry>
+            <Button x:Name="BtnAdd" Text="Salvar" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+
+        <Label Text="Lista de Tarefas" HorizontalOptions="Center" FontAttributes="Bold" FontSize="24"></Label>
+
+        <ListView x:Name="ListaTarefas" ItemsSource="{Binding Tarefas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Excluir" Clicked="ExcluirTarefa" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Editar" Clicked="EditarTarefa" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <Label Text="{Binding Nome}"></Label>
+                            <Label Text="{Binding Finalizado}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
